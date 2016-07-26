@@ -12,3 +12,7 @@ allow system_server user_profile_data_file:file { r_file_perms };
 allow system_server perfd_data_file:dir search;
 allow system_server perfd_data_file:sock_file write;
 allow system_server perfd:unix_stream_socket connectto;
+
+# interact with thermal_config
+allow system_server thermal-engine:unix_stream_socket connectto;
+allow system_server thermal_socket:sock_file write;
