@@ -1,1 +1,4 @@
 allow cameraserver sysfs:file { write };
+
+# perfd
+allow cameraserver mpctl_socket:dir search;
