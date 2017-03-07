@@ -141,7 +141,13 @@ on enable-low-power
     write /sys/class/devfreq/soc:qcom,mincpubw/governor "cpufreq"
 
     # Set idle GPU to 133 Mhz
-    write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 7
+    write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
+
+    # Set perfd properties
+    setprop sys.post_boot.parsed 1
+    
+    # Start perfd after all properties have been properly set
+    start perfd
 
     # Starting io prefetcher service
     start iop
