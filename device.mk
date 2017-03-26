@@ -73,6 +73,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vr.high_performance.xml:system/etc/permissions/android.hardware.vr.high_performance.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
+# Ramdisk
+PRODUCT_PACKAGES += \
+    init.power.sh
+
 # Audio
 
 PRODUCT_COPY_FILES += \
