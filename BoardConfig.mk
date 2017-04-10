@@ -30,12 +30,6 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno530
 # Build with Clang by default
 USE_CLANG_PLATFORM_BUILD := true
 
-# jemalloc
-MALLOC_SVELTE := true
-
-# Compile libhwui in performance mode
-HWUI_COMPILE_FOR_PERF := true
-
 # Snapdragon LLVM
 TARGET_USE_SDCLANG := true
 
@@ -44,9 +38,6 @@ SDCLANG := true
 SDCLANG_PATH := prebuilts/clang/linux-x86/host/sdclang-3.8/bin
 SDCLANG_LTO_DEFS := device/qcom/common/sdllvm-lto-defs.mk
 endif
-
-STRICT_ALIASING := true
-CLANG_O3 := true
 
 # Architecture
 TARGET_ARCH := arm64
@@ -213,6 +204,7 @@ HAVE_ADRENO_SOURCE := false
 OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 MAX_VIRTUAL_DISPLAY_DIMENSION := 4096
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
 # Enable dexpreopt to speed boot time
 ifeq ($(HOST_OS),linux)
