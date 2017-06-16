@@ -231,6 +231,10 @@ TARGET_PROVIDES_LIBLIGHT := true
 # Media
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
+# Power HAL
+TARGET_POWERHAL_VARIANT := voxpopuli
+TARGET_USES_INTERACTION_BOOST := true
+
 # RIL
 TARGET_RIL_VARIANT := caf
 
@@ -290,3 +294,4 @@ BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 BOARD_SECCOMP_POLICY += $(BOARD_PATH)/seccomp
 
 -include vendor/leeco/x2/BoardConfigVendor.mk
+-include device/voxpopuli/sepolicy/sepolicy.mk
