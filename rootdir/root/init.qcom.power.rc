@@ -220,6 +220,9 @@ on charger
     wait /dev/block/bootdevice
     start hvdcp_opti
 
+on property:sys.boot_completed=1
+    trigger enable-low-power
+
 on class_start:late_start
     trigger enable-low-power
 
