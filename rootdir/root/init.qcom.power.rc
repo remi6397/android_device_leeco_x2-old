@@ -210,6 +210,12 @@ on enable-low-power
     # Disable touch boost
     write /sys/module/msm_performance/parameters/touchboost 0
 
+    # Adjust Schedutil tunables for better performance
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us "500"
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us "5000"
+    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us "500"
+    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us "5000"
+
 on charger
     write /sys/devices/system/cpu/cpu1/online 0
     write /sys/devices/system/cpu/cpu2/online 0
