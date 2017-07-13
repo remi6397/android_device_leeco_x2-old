@@ -162,6 +162,7 @@ BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 # Enable real time lockscreen charging current values
 BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
+HEALTHD_ENABLE_TRICOLOR_LED := true
 
 # Power
 TARGET_PROVIDES_POWERHAL := true
