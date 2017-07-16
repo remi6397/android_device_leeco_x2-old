@@ -246,6 +246,9 @@ persist.radio.ROTATION_ENABLE=1
 # sdcardFS
 ro.sys.sdcardfs=true
 
+# Enable TX mask
+persist.data.tcp_rst_drop=true
+
 # Fast Dormancy
 persist.env.fastdorm.enabled=true
 
