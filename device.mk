@@ -282,6 +282,9 @@ PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/leeco/x2/lepref/files,/system/etc)
 
 # Thermal
+PRODUCT_PACKAGES += \
+    thermal.msm8996
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine.conf
 
