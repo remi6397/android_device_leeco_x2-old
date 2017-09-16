@@ -329,6 +329,10 @@ endif
 # Model is set via init library
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST := \
     ro.product.model
+	
+# OTA
+PRODUCT_PACKAGES += \
+    OTAUpdates
 
 # ViperFX + Dolby Atmos Vendor
 ifeq ($(AUDIO_VIPDAX),true)
