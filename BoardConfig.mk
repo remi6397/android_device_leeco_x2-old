@@ -27,6 +27,17 @@ TARGET_NO_BOOTLOADER := true
 TARGET_BOARD_PLATFORM := msm8996
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno530
 
+#Compile with Snapdragon LLVM Compiler
+ifneq ($(HOST_OS),darwin)
+
+SDCLANG := true
+
+SDCLANG_PATH := prebuilts/clang/linux-x86/host/sdclang-3.8/bin
+
+SDCLANG_LTO_DEFS := device/qcom/common/sdllvm-lto-defs.mk
+
+endif
+
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a

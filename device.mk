@@ -110,7 +110,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_CHARACTERISTICS := nosdcard
 
 #PRODUCT_PROPERTY_OVERRIDES += \
-#    ro.sys.sdcardfs=true
+    ro.sys.sdcardfs=true
 
 # Alipay / WeChat
 PRODUCT_BOOT_JARS += \
@@ -142,6 +142,7 @@ PRODUCT_COPY_FILES += \
 # Camera
 PRODUCT_PACKAGES += \
     GoogleCamera \
+    SnapdragonCamera \
     libstlport
 
 # Shims
