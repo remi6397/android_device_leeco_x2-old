@@ -142,7 +142,7 @@ PRODUCT_COPY_FILES += \
 # Camera
 PRODUCT_PACKAGES += \
     GoogleCamera \
-    SnapdragonCamera \
+    Snap \
     libstlport
 
 # Shims
@@ -334,6 +334,11 @@ PRODUCT_SYSTEM_PROPERTY_BLACKLIST := \
 # OTA
 PRODUCT_PACKAGES += \
     OTAUpdates
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.ota.version=$(shell date +%Y%m%d) \
+    ro.ota.romname=Slim_x2-Juan \
+    ro.ota.manifest=https://cdn.rawgit.com/slim-x2/OTA/ng7.1/ota.xml
 
 # ViperFX + Dolby Atmos Vendor
 ifeq ($(AUDIO_VIPDAX),true)
