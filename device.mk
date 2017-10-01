@@ -19,9 +19,6 @@ $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk
 
 $(call inherit-product, vendor/leeco/x2/x2-vendor.mk)
 
-# ViperFX + Dolby Atmos
-AUDIO_VIPDAX := true
-
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -77,14 +74,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
 # Audio
-ifeq ($(AUDIO_VIPDAX),true)
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio/vipdax/audio_policy.conf:system/etc/audio_policy.conf
-ADDITIONAL_DEFAULT_PROPERTIES += ro.musicfx.disabled=true
-else
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
-endif
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
@@ -141,7 +130,6 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    GoogleCamera \
     Snap \
     libstlport
 
@@ -339,8 +327,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ota.version=$(shell date +%Y%m%d) \
     ro.ota.romname=Slim_x2-Juan \
     ro.ota.manifest=https://rawgit.com/slim-x2/OTA/ng7.1/ota.xml
-
-# ViperFX + Dolby Atmos Vendor
-ifeq ($(AUDIO_VIPDAX),true)
-$(call inherit-product-if-exists, vendor/leeco/vipdax/vipdax-vendor.mk)
-endif
