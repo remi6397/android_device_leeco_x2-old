@@ -155,7 +155,7 @@ ro.am.reschedule_service=true
 ro.vendor.extension_library=libqti-perfd-client.so
 ro.min_freq_0=307200
 ro.min_freq_4=307200
-ro.sys.fw.bg_apps_limit=60
+ro.sys.fw.bg_apps_limit=36
 
 # QCOM
 #ro.frp.pst=/dev/block/bootdevice/by-name/frp
@@ -248,10 +248,11 @@ persist.radio.VT_ENABLE=1
 persist.radio.REVERSE_QMI=0
 persist.radio.ROTATION_ENABLE=1
 
-# OTA Updates
-ro.ota.romname=Slim_x2-Juan
-ro.ota.manifest=https://cdn.rawgit.com/slim-x2/OTA/ng7.1/ota.xml
+# sdcardFS
+ro.sys.sdcardfs=true
 
+# Fast Dormancy
+persist.env.fastdorm.enabled=true
 
 # Build.prop tweaks
 qcom.hw.aac.encoder=true
