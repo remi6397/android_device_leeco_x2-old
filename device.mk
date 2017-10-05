@@ -338,7 +338,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ota.version=$(shell date +%Y%m%d) \
     ro.ota.romname=Slim_x2-Juan \
-    ro.ota.manifest=https://cdn.rawgit.com/slim-x2/OTA/ng7.1/ota.xml
+    ro.ota.manifest=https://rawgit.com/slim-x2/OTA/ng7.1/ota.xml
 
 # ViperFX + Dolby Atmos Vendor
 ifeq ($(AUDIO_VIPDAX),true)
