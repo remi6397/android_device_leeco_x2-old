@@ -86,6 +86,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/mixer_paths_tasha.xml:system/etc/mixer_paths_tasha.xml \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
 
+ADDITIONAL_DEFAULT_PROPERTIES += \
+    ro.musicfx.disabled=true
+
 # Keylayouts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/atmel_mxt_T100_touchscreen.kl:system/usr/keylayout/atmel_mxt_T100_touchscreen.kl \
@@ -96,13 +99,6 @@ PRODUCT_COPY_FILES += \
 
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
-
-#PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sys.sdcardfs=true
-
-# Alipay / WeChat
-PRODUCT_BOOT_JARS += \
-    org.ifaa.android.manager
 
 # Audio
 PRODUCT_PACKAGES += \
