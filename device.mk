@@ -266,9 +266,6 @@ PRODUCT_BOOT_JARS += \
     qcnvitems \
     qcrilhook
 
-# Telephony
-PRODUCT_BOOT_JARS += qti-telephony-common
-
 # Healthd
 PRODUCT_PACKAGES += \
     libhealthd.msm8996
