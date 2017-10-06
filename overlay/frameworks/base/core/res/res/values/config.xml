@@ -444,4 +444,8 @@
 
     <!-- If this is true, device supports Sustained Performance Mode. -->
     <bool name="config_sustainedPerformanceModeSupported">true</bool>
+
+    <!-- The duration (in milliseconds) that the radio will scan for a signal when there's no network connection. If the scan doesn't timeout, use zero -->
+    <integer name="config_radioScanningTimeout">5000</integer>
+
 </resources>
