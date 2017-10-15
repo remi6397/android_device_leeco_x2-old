@@ -27,16 +27,26 @@ TARGET_NO_BOOTLOADER := true
 TARGET_BOARD_PLATFORM := msm8996
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno530
 
-#Compile with Snapdragon LLVM Compiler
+# Build with Clang by default
+USE_CLANG_PLATFORM_BUILD := true
+
+# jemalloc
+MALLOC_SVELTE := true
+
+# Compile libhwui in performance mode
+HWUI_COMPILE_FOR_PERF := true
+
+# Snapdragon LLVM
+TARGET_USE_SDCLANG := true
+
 ifneq ($(HOST_OS),darwin)
-
 SDCLANG := true
-
 SDCLANG_PATH := prebuilts/clang/linux-x86/host/sdclang-3.8/bin
-
 SDCLANG_LTO_DEFS := device/qcom/common/sdllvm-lto-defs.mk
-
 endif
+
+STRICT_ALIASING := true
+CLANG_O3 := true
 
 # Architecture
 TARGET_ARCH := arm64
@@ -49,7 +59,7 @@ TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv7-a-neon
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a53
+TARGET_2ND_CPU_VARIANT := kryo
 
 ENABLE_CPUSETS := true
 TARGET_USES_INTERACTION_BOOST := true
@@ -231,9 +241,12 @@ TARGET_PROVIDES_LIBLIGHT := true
 # Media
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
+
 # Power HAL
 TARGET_POWERHAL_VARIANT := voxpopuli
 TARGET_USES_INTERACTION_BOOST := true
+TARGET_HIGH_BRIGHTNESS_MODE_NODE := "/sys/devices/virtual/graphics/fb0/hbm"
+POWER_FEATURE_HIGH_BRIGHTNESS_MODE := 50
 
 # RIL
 TARGET_RIL_VARIANT := caf
