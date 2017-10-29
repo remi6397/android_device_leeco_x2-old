@@ -241,13 +241,6 @@ TARGET_PROVIDES_LIBLIGHT := true
 # Media
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
-
-# Power HAL
-TARGET_POWERHAL_VARIANT := voxpopuli
-TARGET_USES_INTERACTION_BOOST := true
-TARGET_HIGH_BRIGHTNESS_MODE_NODE := "/sys/devices/virtual/graphics/fb0/hbm"
-POWER_FEATURE_HIGH_BRIGHTNESS_MODE := 50
-
 # RIL
 TARGET_RIL_VARIANT := caf
 
@@ -307,4 +300,3 @@ BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 BOARD_SECCOMP_POLICY += $(BOARD_PATH)/seccomp
 
 -include vendor/leeco/x2/BoardConfigVendor.mk
--include device/voxpopuli/sepolicy/sepolicy.mk
