@@ -44,3 +44,5 @@ for memlat in /sys/class/devfreq/*qcom,memlat-cpu* ; do
     write $memlat/governor "mem_latency"
     write $memlat/polling_interval 10
 done
+
+
