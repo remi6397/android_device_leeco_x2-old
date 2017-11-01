@@ -135,7 +135,7 @@ static int process_boost(int boost_handle, int duration)
 {
     char governor[80];
     int eas_launch_resources[] = {0x40804000, 0xFFF, 0x40804100, 0xFFF,
-                                         0x40800000, 0xFFF, 0x40800100, 0xFFF,
+                                         0x40800000, 1000, 0x40800100, 1000,
                                          0x41800000, 140,   0x40400000, 0x1};
     int hmp_launch_resources[] = {0x40C00000, 0x1,   0x40804000, 0xFFF,
                                          0x40804100, 0xFFF, 0x40800000, 0xFFF,
@@ -255,7 +255,7 @@ static int process_video_encode_hint(void *metadata)
 static int process_activity_launch_hint(void *data)
 {
     // boost will timeout in 1.5s
-    int duration = 1500;
+    int duration = 1000;
     if (sustained_performance_mode || vr_mode) {
         return HINT_HANDLED;
     }
@@ -283,7 +283,7 @@ int power_hint_override(struct power_module *module, power_hint_t hint, void *da
     int ret_val = HINT_NONE;
     switch(hint) {
 #ifdef EXTRA_POWERHAL_HINTS
-        case POWER_HINT_SET_PROFILE:
+        case POWER_HINT_CAM_PREVIEW:
             ret_val = process_cam_preview_hint(data);
             break;
 #endif

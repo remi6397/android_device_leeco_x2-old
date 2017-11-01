@@ -47,7 +47,7 @@ const int CPU_SENSORS[] = {4, 6, 9, 11};
 //qcom, limit-temp
 #define CPU_THROTTLING_THRESHOLD      60
 #define BATTERY_SHUTDOWN_THRESHOLD    60
-// device/leeco/x2/configs/thermal-engine-marlin.conf
+// device/leeco/x2/configs/thermal-engine.conf
 #define SKIN_THROTTLING_THRESHOLD     47
 #define SKIN_SHUTDOWN_THRESHOLD       70
 #define VR_THROTTLED_BELOW_MIN        58
