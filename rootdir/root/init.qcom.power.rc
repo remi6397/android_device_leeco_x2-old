@@ -1,3 +1,5 @@
+import /init.spectrum.rc
+
 on init
     # Bring up CPUs
     exec - root root system -- /system/bin/init.power.sh
