@@ -68,7 +68,7 @@ TARGET_USES_QCOM_BSP := true
 TARGET_USES_64_BIT_BINDER := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff loglevel=7 androidboot.selinux=permissive
 BOARD_KERNEL_TAGS_OFFSET := 0x02000000
 BOARD_RAMDISK_OFFSET     := 0x02200000
 BOARD_KERNEL_BASE := 0x80000000
@@ -184,7 +184,7 @@ BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 HEALTHD_ENABLE_TRICOLOR_LED := true
 
 # Power
-TARGET_POWERHAL_VARIANT := voxpopuli
+TARGET_PROVIDES_POWERHAL := true
 TARGET_USES_INTERACTION_BOOST := true
 BOARD_HAL_STATIC_LIBRARIES := libdumpstate.msm8996
 
@@ -300,4 +300,3 @@ BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 BOARD_SECCOMP_POLICY += $(BOARD_PATH)/seccomp
 
 -include vendor/leeco/x2/BoardConfigVendor.mk
--include device/voxpopuli/sepolicy/sepolicy.mk

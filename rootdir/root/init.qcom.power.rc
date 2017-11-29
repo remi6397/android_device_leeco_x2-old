@@ -1,11 +1,6 @@
-import /init.spectrum.rc
-
 on init
     # Bring up CPUs
     exec - root root system -- /system/bin/init.power.sh
-
-    # Create Power HAL tunables
-    mkdir /dev/voxpopuli 0555 system system
 
     # Ensure all cpu's are online
     write /sys/devices/system/cpu/cpu0/online 1
@@ -35,46 +30,14 @@ on boot
     chmod 0664 /dev/cpuset/camera-daemon/tasks
 
     # set default schedTune value for foreground/top-app (only affects EAS)
+    #write /dev/stune/schedtune.prefer_idle 1
     write /dev/stune/foreground/schedtune.prefer_idle 1
-    write /dev/stune/foreground/schedtune.boost 0
-    write /dev/stune/background/schedtune.boost 0
-    write /dev/stune/background/schedtune.prefer_idle 0
-    write /dev/stune/top-app/schedtune.boost 0
+    write /dev/stune/background/schedtune.prefer_idle 1
     write /dev/stune/top-app/schedtune.prefer_idle 1
-    write /dev/stune/schedtune.boost 0
-    write /dev/stune/schedtune.prefer_idle 0
+    write /dev/stune/top-app/schedtune.boost 5
 
-    # Set Power HAL tunables
-    write /dev/voxpopuli/enable_interaction_boost   1
-    write /dev/voxpopuli/fling_min_boost_duration   250
-    write /dev/voxpopuli/fling_max_boost_duration   2500
-    write /dev/voxpopuli/fling_boost_topapp         10
-    write /dev/voxpopuli/fling_min_freq_big         1036
-    write /dev/voxpopuli/fling_min_freq_little      1036
-    write /dev/voxpopuli/touch_boost_duration       250
-    write /dev/voxpopuli/touch_boost_topapp         0
-    write /dev/voxpopuli/touch_min_freq_big         1036
-    write /dev/voxpopuli/touch_min_freq_little      1036
-    chmod 0644 /dev/voxpopuli/enable_interaction_boost
-    chmod 0644 /dev/voxpopuli/fling_min_boost_duration
-    chmod 0644 /dev/voxpopuli/fling_max_boost_duration
-    chmod 0644 /dev/voxpopuli/fling_boost_topapp      
-    chmod 0644 /dev/voxpopuli/fling_min_freq_big      
-    chmod 0644 /dev/voxpopuli/fling_min_freq_little   
-    chmod 0644 /dev/voxpopuli/touch_boost_duration    
-    chmod 0644 /dev/voxpopuli/touch_boost_topapp      
-    chmod 0644 /dev/voxpopuli/touch_min_freq_big      
-    chmod 0644 /dev/voxpopuli/touch_min_freq_little   
-    chown system system /dev/voxpopuli/enable_interaction_boost
-    chown system system /dev/voxpopuli/fling_min_boost_duration
-    chown system system /dev/voxpopuli/fling_max_boost_duration
-    chown system system /dev/voxpopuli/fling_boost_topapp      
-    chown system system /dev/voxpopuli/fling_min_freq_big      
-    chown system system /dev/voxpopuli/fling_min_freq_little   
-    chown system system /dev/voxpopuli/touch_boost_duration    
-    chown system system /dev/voxpopuli/touch_boost_topapp      
-    chown system system /dev/voxpopuli/touch_min_freq_big      
-    chown system system /dev/voxpopuli/touch_min_freq_little 
+    # Enable sched boost
+    write /proc/sys/kernel/sched_boost 1
 
 on enable-low-power
 
@@ -128,9 +91,6 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/ignore_hispeed_on_notif 0
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/enable_prediction 1
 
-    # EAS: Capping the max frequency of silver core to 1.6GHz
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1593600
-
     # Switch to schedutil governor - Only has effect if EAS is enabled
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "schedutil"
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "schedutil"
@@ -181,13 +141,7 @@ on enable-low-power
     write /sys/class/devfreq/soc:qcom,mincpubw/governor "cpufreq"
 
     # Set idle GPU to 133 Mhz
-    write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
-
-    # Set perfd properties
-    setprop sys.post_boot.parsed 1
-    
-    # Start perfd after all properties have been properly set
-    start perfd
+    write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 7
 
     # Starting io prefetcher service
     start iop
@@ -202,12 +156,6 @@ on enable-low-power
 
     # Disable touch boost
     write /sys/module/msm_performance/parameters/touchboost 0
-
-    # Adjust Schedutil tunables for better performance
-    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us "500"
-    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us "5000"
-    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us "500"
-    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us "5000"
 
 on charger
     write /sys/devices/system/cpu/cpu1/online 0
@@ -285,8 +233,3 @@ on property:dev.bootcomplete=1
     chmod 0644 /d/rpm_stats
     chmod 0644 /d/dpm_master_stats
 
-    # Adjust Schedutil tunables for better performance
-    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us "500"
-    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us "50000"
-    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us "500"
-    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us "50000"
