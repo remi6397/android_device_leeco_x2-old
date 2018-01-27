@@ -184,9 +184,7 @@ BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 HEALTHD_ENABLE_TRICOLOR_LED := true
 
 # Power
-TARGET_POWERHAL_VARIANT := voxpopuli
-TARGET_USES_INTERACTION_BOOST := true
-BOARD_HAL_STATIC_LIBRARIES := libdumpstate.msm8996
+TARGET_PROVIDES_POWERHAL := true
 
 # CM Hardware
 BOARD_USES_CYANOGEN_HARDWARE := true
@@ -300,4 +298,3 @@ BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 BOARD_SECCOMP_POLICY += $(BOARD_PATH)/seccomp
 
 -include vendor/leeco/x2/BoardConfigVendor.mk
--include device/voxpopuli/sepolicy/sepolicy.mk
