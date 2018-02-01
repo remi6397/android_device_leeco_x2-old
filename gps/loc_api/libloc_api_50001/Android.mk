@@ -42,7 +42,7 @@ LOCAL_CFLAGS += \
 LOCAL_C_INCLUDES:= \
     $(TARGET_OUT_HEADERS)/gps.utils \
     $(TARGET_OUT_HEADERS)/libloc_core \
-    device/leeco/x2/gps/loc_api/libloc_api_50001 \
+    $(call project-path-for,qcom-gps) \
     $(TARGET_OUT_HEADERS)/libflp \
     $(TARGET_OUT_HEADERS)/libloc_pla
 
@@ -63,7 +63,7 @@ include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := gps.$(BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE)
+LOCAL_MODULE := gps.msm8996
 LOCAL_MODULE_OWNER := qcom
 
 LOCAL_MODULE_TAGS := optional

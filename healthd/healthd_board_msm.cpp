@@ -85,7 +85,7 @@ struct led_ctl {
     const char *path;
 };
 
-struct led_ctl leds[3] =
+static struct led_ctl leds[3] =
     {{RED_LED, RED_LED_PATH},
     {GREEN_LED, GREEN_LED_PATH},
     {BLUE_LED, BLUE_LED_PATH}};
@@ -97,7 +97,7 @@ struct soc_led_color_mapping {
     int color;
 };
 
-struct soc_led_color_mapping soc_leds[3] = {
+static struct soc_led_color_mapping soc_leds[3] = {
     {15, RED_LED},
     {90, RED_LED | GREEN_LED},
     {100, GREEN_LED},

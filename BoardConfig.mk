@@ -28,25 +28,25 @@ TARGET_BOARD_PLATFORM := msm8996
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno530
 
 # Build with Clang by default
-USE_CLANG_PLATFORM_BUILD := true
+#USE_CLANG_PLATFORM_BUILD := true
 
 # jemalloc
-MALLOC_SVELTE := true
+#MALLOC_SVELTE := true
 
 # Compile libhwui in performance mode
-HWUI_COMPILE_FOR_PERF := true
+#HWUI_COMPILE_FOR_PERF := true
 
 # Snapdragon LLVM
-TARGET_USE_SDCLANG := true
+#TARGET_USE_SDCLANG := true
 
-ifneq ($(HOST_OS),darwin)
-SDCLANG := true
-SDCLANG_PATH := prebuilts/clang/linux-x86/host/sdclang-3.8/bin
-SDCLANG_LTO_DEFS := device/qcom/common/sdllvm-lto-defs.mk
-endif
+#ifneq ($(HOST_OS),darwin)
+#SDCLANG := true
+#SDCLANG_PATH := prebuilts/clang/linux-x86/host/sdclang-3.8/bin
+#SDCLANG_LTO_DEFS := device/qcom/common/sdllvm-lto-defs.mk
+#endif
 
-STRICT_ALIASING := true
-CLANG_O3 := true
+#STRICT_ALIASING := true
+#CLANG_O3 := true
 
 # Architecture
 TARGET_ARCH := arm64
@@ -77,11 +77,11 @@ BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_KERNEL_APPEND_DTB := true
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_SOURCE := kernel/leeco/n7.1
+TARGET_KERNEL_SOURCE := kernel/leeco/msm8996
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_COMPILE_WITH_MSM_KERNEL := true
 
-TARGET_KERNEL_CONFIG := lineage_x2_defconfig
+TARGET_KERNEL_CONFIG := xosp_x2_defconfig
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
@@ -287,7 +287,7 @@ TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_NTFS_3G := true
 #TWRP_EVENT_LOGGING := true
 else
-USE_CLANG_PLATFORM_BUILD := true
+#USE_CLANG_PLATFORM_BUILD := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/root/fstab.qcom
 endif
 
