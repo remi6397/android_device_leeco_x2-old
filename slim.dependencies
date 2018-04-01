@@ -10,10 +10,5 @@
     {
         "repository": "android_external_json-c",
         "target_path": "external/json-c",
-    },
-    {
-        "repository" : "slim-x2/OTAUpdates",
-        "target_path": "packages/apps/OTAUpdates",
-        "revision"     : "ng7.1"
     }
 ]

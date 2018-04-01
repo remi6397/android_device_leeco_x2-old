@@ -357,12 +357,3 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 # Model is set via init library
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST := \
     ro.product.model
-	
-# OTA
-PRODUCT_PACKAGES += \
-    OTAUpdates
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.ota.version=$(shell date +%Y%m%d) \
-    ro.ota.romname=Slim_x2-Juan \
-    ro.ota.manifest=https://rawgit.com/slim-x2/OTA/ng7.1/ota.xml
