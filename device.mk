@@ -310,6 +310,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vr.high_performance.xml:system/etc/permissions/android.hardware.vr.high_performance.xml
 
+# KCAL
+PRODUCT_PACKAGES += \
+    kcal
 
 # Wifi
 PRODUCT_PACKAGES += \
