@@ -38,10 +38,14 @@ HWUI_COMPILE_FOR_PERF := true
 
 # Snapdragon LLVM
 TARGET_USE_SDCLANG := true
-
 SDCLANG := true
-SDCLANG_PATH := prebuilts/clang/linux-x86/host/sdclang-3.8/bin
-SDCLANG_LTO_DEFS := device/qcom/common/sdllvm-lto-defs.mk
+
+# Include SDCLANG definitions if it is requested and available
+ifeq ($(HOST_OS),linux)
+    ifneq ($(wildcard vendor/qcom/sdclang-4.0/),)
+        include vendor/slim/sdclang/sdclang.mk
+    endif
+endif
 
 STRICT_ALIASING := true
 CLANG_O3 := true
